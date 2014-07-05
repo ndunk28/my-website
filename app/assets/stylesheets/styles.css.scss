@@ -1,0 +1,121 @@
+ @import 'mixins';
+
+/* fontface */
+
+/* general */
+  *{ 
+    @include border-box;
+  }
+  html, body {
+    height: 100%;
+    font: 16px/normal sans-serif, arial;
+    color: $gray;
+    background-color: $white;
+    -webkit-font-smoothing: antialiased;
+  }
+  a, a > * {
+    outline: 0;
+    text-decoration: none;
+    &:active{
+      outline: 0;
+    }
+  }
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+    outline: none;
+  }
+  html, body, p, ul, h1, h2, h3 { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  input[type="email"]::-ms-clear, input[type="password"]::-ms-clear,
+  input[type="email"]::-ms-reveal, input[type="password"]::-ms-reveal{
+    display:none;
+  }
+  input,textarea {
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  /* General layout */
+    .wrapper {
+      position: relative;
+      height: 100%;
+      min-width: 1080px;
+    }
+    .page-wrapper{
+      position: relative;
+      height: auto;
+      min-height: 100%;
+      padding-bottom: 40px;
+      width: 100%;
+      @include transition;
+      &.modal-open{
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        position: fixed;
+        height: 100%
+      }
+    }
+    .container{ 
+      max-width: 1080px;
+      margin: 0 auto; 
+      overflow: hidden; 
+      position: relative; 
+      height: 100%;
+    }
+
+  /* additional style */ 
+    .invisible {
+     display: none;
+    }
+    .visible{
+      display: block;
+    }
+    .visibility{
+      visibility: hidden;
+    }
+    .uppercase{
+      text-transform: uppercase;
+    }
+    .capitalize{
+      text-transform: capitalize;
+    }
+    .absolute{
+      position: absolute;
+    }
+ 
+  /* input */
+    input, textarea{
+      font: 1em sans-serif, arial;
+      background: transparent;
+      border:0;
+      padding: 0 10px;
+    }
+
+/* header */
+  header{
+    width: 100%;
+    padding: 20px 0;
+    background: $gray;
+    p{
+      color: $white;
+    }
+  }
+
+/* footer */
+  footer{
+    position: relative;
+    height: 40px;
+    background-color: $black;
+    margin-top: -40px;
+    p{
+      font-size: 0.750em;
+      color: $white;
+      padding: 10px;
+    }
+  }
+

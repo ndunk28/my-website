@@ -1,0 +1,158 @@
+$white       : #ffffff;
+$black       : #191919;
+$darkGray    : #666666;
+$gray        : #808285;
+$purple      : #5a2b78;
+$green       : #8cc63f;
+$brown       : #a6a7a9;
+$gray90      : #E5E5E5;
+$red         : #dd929f;
+$blue        : #3b5998;
+
+%clearfix{
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+@function em($pixels, $font-size: 16px) {
+  @return #{($pixels / $font-size)}em;
+}
+
+@mixin transition($value : 0.3s){
+  -webkit-transition: all $value ease-in-out 0s;
+     -moz-transition: all $value ease-in-out 0s;
+       -o-transition: all $value ease-in-out 0s;
+          transition: all $value ease-in-out 0s;
+}
+
+@mixin padding-box{
+  -webkit-background-clip: padding-box; 
+     -moz-background-clip: padding; 
+          background-clip: padding-box;
+}
+
+@mixin border-box {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+       -o-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@mixin border-radius($radius: 3px, $direction: 'all') {
+  @if $direction == 'all' {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
+  }
+
+  @if $direction == 'left'{
+    -webkit-border-radius: $radius 0px 0px $radius;
+       -moz-border-radius: $radius 0px 0px $radius;
+        -ms-border-radius: $radius 0px 0px $radius;
+            border-radius: $radius 0px 0px $radius;
+  }
+
+  @if $direction == 'right'{
+    -webkit-border-radius: 0px $radius $radius 0px;
+       -moz-border-radius: 0px $radius $radius 0px;
+        -ms-border-radius: 0px $radius $radius 0px;
+            border-radius: 0px $radius $radius 0px;
+  }
+   @if $direction == 'top'{
+    -webkit-border-radius: $radius $radius 0px 0px;
+       -moz-border-radius: $radius $radius 0px 0px;
+        -ms-border-radius: $radius $radius 0px 0px;
+            border-radius: $radius $radius 0px 0px;
+  }
+
+ @if $direction == 'bottom'{
+    -webkit-border-radius: 0px 0px $radius $radius;
+       -moz-border-radius: 0px 0px $radius $radius;
+        -ms-border-radius: 0px 0px $radius $radius;
+            border-radius: 0px 0px $radius $radius;
+  }
+
+  background-clip: padding-box;
+}
+
+@mixin arrow($direction, $size, $color) {
+  height: 0;
+  width: 0;
+
+  @if $direction == 'up' {
+    border-bottom: $size solid $color;
+     border-right: $size solid transparent;
+      border-left: $size solid transparent;
+    
+  }
+
+  @if $direction == 'down' {
+    border-right: $size solid transparent;
+     border-left: $size solid transparent;
+      border-top: $size solid $color
+  }
+
+  @if $direction == 'left' {
+    border-bottom: $size solid transparent;
+     border-right: $size solid $color;
+       border-top: $size solid transparent;
+  }
+
+  @if $direction == 'right' {
+    border-bottom: $size solid transparent;
+      border-left: $size solid $color;
+       border-top: $size solid transparent;
+  }
+}
+
+@mixin box-shadow($top, $left, $blur, $width : 0px, $color:'', $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $width $color;
+       -moz-box-shadow: inset $top $left $blur $width $color;
+            box-shadow: inset $top $left $blur $width $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $width $color;
+       -moz-box-shadow: $top $left $blur $width $color;
+            box-shadow: $top $left $blur $width $color;
+  }
+}
+
+%box-shadow-none{
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+}
+
+@mixin animation($name, $duration){
+  -webkit-animation-name: $name;
+     -moz-animation-name: $name;
+       -o-animation-name: $name;
+          animation-name: $name;
+
+  -webkit-animation-iteration-count: once; 
+     -moz-animation-iteration-count: once;  
+       -o-animation-iteration-count: once;     
+          animation-iteration-count: once;
+
+  -webkit-animation-timing-function: ease-in; 
+     -moz-animation-timing-function: ease-in; 
+       -o-animation-timing-function: ease-in;     
+          animation-timing-function: ease-in;
+        
+  -webkit-animation-duration: $duration;
+     -moz-animation-duration: $duration;
+       -o-animation-duration: $duration; 
+          animation-duration: $duration;
+}
+
+@mixin transform($params){
+  -webkit-transform: $params;
+     -moz-transform: $params;
+          transform: $params;
+}
